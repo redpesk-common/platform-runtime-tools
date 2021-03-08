@@ -244,13 +244,13 @@ done
 [[ -n "$SHELL_OUT" ]] && {
 	info "Generating shell format in $SHELL_OUT"
 	__generate_output bash >$SHELL_OUT
-	__smackdrop $SHELL_OUT
+	# __smackdrop $SHELL_OUT
 }
 
 [[ -n "$JSON_OUT" ]] && {
 	info "Generating json format in $JSON_OUT"
 	__generate_output json >$JSON_OUT
-	__smackdrop $JSON_OUT
+	# __smackdrop $JSON_OUT
 }
 
 
