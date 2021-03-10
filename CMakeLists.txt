@@ -78,10 +78,10 @@ install (
 
 ####### install scripts ######
 # scripts are split in two parts:
-# - detection scripts (for various steps: core, devices, ...) run by pr-detect
+# - detection scripts (for various steps: core, devices, os ...) run by pr-detect
 # - customization scripts run by pr-customize (not provided here, so installed as an empty folder)
 
-foreach(step core devices)
+foreach(step core devices os)
 	file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/scriptlets/customize/${step})
 endforeach()
 

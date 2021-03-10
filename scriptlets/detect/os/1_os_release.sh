@@ -23,7 +23,7 @@ detect_afm_applications() {
         packages+=($package)
     done
 
-    addkey packages_afm_installed "${packages[@]}"
+    addkey afm_packages_installed "${packages[@]}"
 }
 
 detect_os_release

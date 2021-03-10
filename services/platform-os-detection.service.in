@@ -1,0 +1,12 @@
+[Unit]
+Description=@PROJECT_NAME@ - os detection service
+DefaultDependencies=no
+Before=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/pr-detect --step=os --output-file=@DETECTION_OUTPUT_DIR@/os --json-file=@DETECTION_OUTPUT_DIR@/os.json
+
+[Install]
+WantedBy=systemd-modules-load.service
+

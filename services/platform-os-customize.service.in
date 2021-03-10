@@ -1,0 +1,13 @@
+[Unit]
+Description=@PROJECT_NAME@ - os customization service
+DefaultDependencies=no
+Before=systemd-modules-load.service
+After=platform-os-detection.service
+Requires=platform-coosre-detection.service
+
+[Service]
+Type=oneshot
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/pr-customize --step=os 
+
+[Install]
+WantedBy=systemd-modules-load.service

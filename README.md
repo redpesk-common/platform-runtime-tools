@@ -11,6 +11,7 @@ Authors:
 
 * Stephane Desneux <stephane.desneux@iot.bzh>
 * Ronan Le Martret <ronan.lemartret@iot.bzh>
+* Valentin Lefebvre <valentin.lefebvre@iot.bzh>
 
 Released under the [Apache 2.0 license](LICENSE).
 
