@@ -16,15 +16,4 @@ detect_os_release() {
     addkey os_version "${version}"
 }
 
-detect_afm_applications() {
-    local packages=()
-    [[ ! -d /var/local/lib/afm/applications ]] && { error "Unable to find /var/local/lib/afm/applications/"; return 1;}
-    for package in $(ls /var/local/lib/afm/applications/); do
-        packages+=($package)
-    done
-
-    addkey afm_packages_installed "${packages[@]}"
-}
-
 detect_os_release
-detect_afm_applications
