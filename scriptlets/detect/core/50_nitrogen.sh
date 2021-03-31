@@ -2,24 +2,22 @@
 
 # Copyright (C) 2018-2019 IoT.bzh
 # Authors:
-#    Stephane Desneux <stephane.desneux@iot.bzh>
-#    Ronan Le Martret <ronan.lemartret@iot.bzh>
 #    Valentin Lefebvre <valentin.lefebvre@iot.bzh>
 # Released under the Apache 2.0 license
 
 detect_nitrogen() {
-    local nitrogenmodel=$(readkey /sys/firmware/devicetree/base/model)
-	[[ ! "$rpimodel" =~ *"Nitrogen"* ]] && return 0;
+	local -A keys
+	[[ ! "$(cat /sys/firmware/devicetree/base/model)" =~ "Nitrogen" ]] && return 0;
 	info "Nitrogen family detected."
 
     # soc information
     keys[soc_vendor]="Nitrogen"
-    keys[soc_family]="$(readkey /sys/firmware/devicetree/base/model) | cut -d' ' -f3,4"
-    keys[soc_id]="unknown"
+    keys[soc_family]="$(readkey /sys/devices/soc0/family )"
+    keys[soc_id]="$(readkey /sys/devices/soc0/soc_id)"
     keys[soc_name]="unknown"
     keys[cpu_cache_kb]="unknown"
 	keys[gpu_name]=$(readkey /sys/firmware/devicetree/base/soc/gpu/compatible | cut -f 2- -d',')
-	keys[soc_revision]="unknown"
+	keys[soc_revision]="$(readkey /sys/devices/soc0/revision)"
 
 	# detect cpu
 	keys[cpu_freq_mhz]=$(readkey /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq)
