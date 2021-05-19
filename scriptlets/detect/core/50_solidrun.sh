@@ -5,18 +5,18 @@
 #    Valentin Lefebvre <valentin.lefebvre@iot.bzh>
 # Released under the Apache 2.0 license
 
-detect_nitrogen() {
+detect_solidrun() {
 	local -A keys
-	[[ ! "$(cat /sys/firmware/devicetree/base/model)" =~ "Nitrogen" ]] && return 0;
-	info "Nitrogen family detected."
+	[[ ! "$(cat /sys/firmware/devicetree/base/model)" =~ "SolidRun" ]] && return 0;
+	info "SolidRun family detected."
 
     # soc information
-    keys[soc_vendor]="Nitrogen"
+    keys[soc_vendor]="SolidRun"
     keys[soc_family]="$(readkey /sys/devices/soc0/family )"
     keys[soc_id]="$(readkey /sys/devices/soc0/soc_id)"
     keys[soc_name]="$(readkey /sys/devices/soc0/machine)"
     keys[cpu_cache_kb]="unknown"
-	keys[gpu_name]=$(readkey /sys/firmware/devicetree/base/soc/gpu/compatible | cut -f 2- -d',')
+	keys[gpu_name]=$(readkey /sys/firmware/devicetree/base/gpu\@38000000/compatible | cut -f 2 -d',')
 	keys[soc_revision]="$(readkey /sys/devices/soc0/revision)"
 
 	# detect cpu
@@ -38,4 +38,4 @@ detect_nitrogen() {
 	done
 }
 
-detect_nitrogen
+detect_solidrun
