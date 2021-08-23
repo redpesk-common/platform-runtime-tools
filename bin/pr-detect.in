@@ -216,8 +216,8 @@ function __generate_output() {
 	done | out_object $fmt
 }
 
-function __smackdrop() {
-	[[ -f "$1" ]] && { debug "Dropping SMACK label for $1"; chsmack -A $1; }
+function __smackadd() {
+	[[ -f "$1" ]] && [[ $(command -v chsmack) ]] && { debug "Adding SMACK label for $1"; chsmack -a System:Shared $1; } || echo "No smack rules added"
 }
 
 # --------------------------------------------------------------
@@ -244,13 +244,13 @@ done
 [[ -n "$SHELL_OUT" ]] && {
 	info "Generating shell format in $SHELL_OUT"
 	__generate_output bash >$SHELL_OUT
-	# __smackdrop $SHELL_OUT
+	__smackadd $SHELL_OUT
 }
 
 [[ -n "$JSON_OUT" ]] && {
 	info "Generating json format in $JSON_OUT"
 	__generate_output json >$JSON_OUT
-	# __smackdrop $JSON_OUT
+	__smackadd $JSON_OUT
 }
 
 

@@ -7,7 +7,6 @@ Requires=platform-core-detection.service
 [Service]
 Type=oneshot
 ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/pr-detect --step=devices --output-file=@DETECTION_OUTPUT_DIR@/devices --json-file=@DETECTION_OUTPUT_DIR@/devices.json
-ExecStartPost=chsmack -a System:Shared @DETECTION_OUTPUT_DIR@/devices @DETECTION_OUTPUT_DIR@/devices.json
 
 [Install]
 WantedBy=basic.target
