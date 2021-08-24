@@ -17,7 +17,7 @@ set (pr-tools_VERSION_PATCH 0)
 set (pr-tools_VERSION "${pr-tools_VERSION_MAJOR}.${pr-tools_VERSION_MINOR}.${pr-tools_VERSION_PATCH}")
 
 # systemd location for system services
-set (SYSTEM_UNIT_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/systemd/system CACHE STRING "Path to systemd system unit files")
+set (SYSTEM_UNIT_DIR ${CMAKE_INSTALL_FULL_LIBDIR} CACHE STRING "Path to systemd system unit files")
 
 # location for scripts loaded by pr-detect or pr-customize
 set (SCRIPTS_DIR ${CMAKE_INSTALL_FULL_LIBEXECDIR}/${PROJECT_NAME} CACHE STRING "Path to install scriptlets")
