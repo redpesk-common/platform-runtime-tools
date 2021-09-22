@@ -10,10 +10,12 @@
 detect_os_release() {
     [[ ! -f /etc/os-release ]] && { error "Unable to open /etc/os-release"; return 1;}
 
-    lines=(`cat /etc/os-release | cut -d'=' -f2`)
-    addkey os_name "${lines[0]}"
-    version=$(echo ${lines[1]} | sed 's/"//')
-    addkey os_version "${version}"
+    distro=$(cat /etc/os-release | grep -e "^NAME=")
+    distro=${distro#*=}
+    addkey os_name ${distro//\"/}
+    version=$(cat /etc/os-release | grep -e "^VERSION=")
+    version=${version#*=}
+    addkey os_version ${version//\"/}
 }
 
 detect_os_release
