@@ -1,7 +1,7 @@
 [Unit]
 Description=@PROJECT_NAME@ - core detection service
 DefaultDependencies=no
-Before=systemd-modules-load.service
+After=systemd-modules-load.service
 
 [Service]
 Type=oneshot
