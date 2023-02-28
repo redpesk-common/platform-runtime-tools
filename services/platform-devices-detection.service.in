@@ -1,6 +1,6 @@
 [Unit]
 Description=@PROJECT_NAME@ - devices detection service
-After=systemd-modules-load.service
+After=network.target
 After=platform-core-detection.service
 Requires=platform-core-detection.service
 
