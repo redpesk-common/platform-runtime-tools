@@ -2,6 +2,8 @@
 Description=@PROJECT_NAME@ - os detection service
 DefaultDependencies=no
 After=systemd-modules-load.service
+After=systemd-remount-fs.service
+ConditionPathIsReadWrite=/etc/
 
 [Service]
 Type=oneshot

@@ -3,7 +3,7 @@ Description=@PROJECT_NAME@ - os customization service
 DefaultDependencies=no
 After=systemd-modules-load.service
 After=platform-os-detection.service
-Requires=platform-coosre-detection.service
+Requires=platform-os-detection.service
 
 [Service]
 Type=oneshot
