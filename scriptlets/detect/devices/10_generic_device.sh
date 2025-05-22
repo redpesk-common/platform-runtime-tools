@@ -14,6 +14,7 @@ detect_netifaces() {
 	local wifi=()
 
 	for x in $(ls -d /sys/class/net/* 2>/dev/null); do
+		[[ ! -d "$x" ]] && continue # Error encountered: ;cat: /sys/class/net/bonding_masters/type: Not a directory; Avoid error: target not a directory 
 		iface=$(basename $x)
 		type=$(cat $x/type)
 
